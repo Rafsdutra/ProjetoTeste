@@ -16,9 +16,9 @@ class CreateCotasTable extends Migration
         Schema::create('cotas', function (Blueprint $table)
         {
             $table->increments('id');
-            $table->number('credito');
-            $table->number('entrada');
-            $table->number('parcelas');
+            $table->bigInteger('credito');
+            $table->bigInteger('entrada');
+            $table->bigInteger('parcelas');
             $table->string('detalhes');
 
 

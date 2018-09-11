@@ -11,6 +11,20 @@
 |
 */
 
-Route::get('/', function () {
+Auth::routes();
+
+Route::get('/', 'HomeController@index');
+    Route::group(['middleware' => ['auth']], function()
+    {
+        Route::resource('roles', 'RoleController');
+        Route::resource('users', 'UserController');
+        Route::resource('cotas', 'CotasController');
+    });
     return view('welcome');
-});
+
+
+Auth::routes();
+
+Route::get('/', 'HomeController@index')->name('home');
+
+

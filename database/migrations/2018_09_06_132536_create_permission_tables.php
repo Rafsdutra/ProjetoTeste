@@ -11,6 +11,7 @@ class CreatePermissionTables extends Migration
     // SPATIE TABLES
 
 
+
     /**
      * Run the migrations.
      *
@@ -36,7 +37,7 @@ class CreatePermissionTables extends Migration
             $table->timestamps();
         });
 
-        Schema::create($tableNames['model_has_permissions'], function(Blueprint $table)
+        Schema::create($tableNames['model_has_permissions'], function(Blueprint $table) use ($tableNames)
         {
             $table->integer('permission_id')->unsigned();
             $table->morphs('model');
@@ -45,7 +46,7 @@ class CreatePermissionTables extends Migration
 
         });
 
-        Schema::create($tableNames['model_has_roles'], function(Blueprint $table)
+        Schema::create($tableNames['model_has_roles'], function(Blueprint $table) use ($tableNames)
         {
             $table->integer('role_id')->unsigned();
             $table->morphs('model');
@@ -54,7 +55,7 @@ class CreatePermissionTables extends Migration
 
         });
 
-        Schema::create($tableNames['roles_has_permissions'], function(Blueprint $table)
+        Schema::create($tableNames['roles_has_permissions'], function(Blueprint $table) use ($tableNames)
        {
            $table->integer('permission_id')->unsigned();
            $table->integer('role_id')->unsigned();
